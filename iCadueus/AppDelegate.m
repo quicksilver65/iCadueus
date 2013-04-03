@@ -8,9 +8,10 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
-
-#import "SecondViewController.h"
+#import "HomeViewController.h"
+#import "SearchViewController.h"
+#import "FavoritesViewController.h"
+#import "InformationViewController.h"
 
 @implementation AppDelegate
 
@@ -18,10 +19,25 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-    UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    
+    UIViewController *homeController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    homeController.tabBarItem= [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"house.png"] tag:0];
+    
+    UIViewController *searchController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    searchController.tabBarItem= [[UITabBarItem alloc] initWithTitle:@"Search" image:[UIImage imageNamed:@"search.png"] tag:0];
+    
+    UIViewController *favoritesController = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+    favoritesController.tabBarItem= [[UITabBarItem alloc] initWithTitle:@"Favorites" image:[UIImage imageNamed:@"star.png"] tag:0];
+    
+    UIViewController *informationController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
+    informationController.tabBarItem= [[UITabBarItem alloc] initWithTitle:@"Info" image:[UIImage imageNamed:@"info.png"] tag:0];
+    
+
+    
+    
+ 
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[viewController1, viewController2];
+    self.tabBarController.viewControllers = @[homeController, searchController,favoritesController,informationController];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
